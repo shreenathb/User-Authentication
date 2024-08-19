@@ -10,7 +10,6 @@ app.secret_key = os.getenv("APP_KEY")
 bcrypt = Bcrypt(app)
 
 
-
 load_dotenv()
 app.config["MONGO_URI"] = os.getenv("MONGO_URL")
 db = PyMongo(app, tlsCAFile=certifi.where()).db
@@ -81,5 +80,3 @@ def logout():
 
 if __name__ == '__main__':
     app.run()
-    
-
