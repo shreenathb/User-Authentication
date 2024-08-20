@@ -18,11 +18,6 @@ const router = createBrowserRouter([
       <div>
         <Navbar />
         <h1>Welcome</h1>
-        <Link to="/login">
-          <button type="button">
-            Login
-          </button>
-        </Link>
       </div>
     ),
   },

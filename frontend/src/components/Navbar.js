@@ -19,6 +19,10 @@ export default function Navbar() {
                         <li class="nav-item">
                             <Link class="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
+                        <li class="nav-item">
+                            {!loginState&&<Link class="nav-link active" aria-current="page" to="/login">Login</Link>}
+                        </li>
+                        
                     </ul>
                 </div>
                 <div>
