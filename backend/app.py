@@ -1,14 +1,17 @@
 from flask import Flask, request, jsonify, session
-from flask_pymongo import PyMongo
-from flask_bcrypt import Bcrypt
+import os
 import certifi
 from dotenv import load_dotenv
-import os
+from flask_cors import CORS
+from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
+
 
 app = Flask(__name__)
+
 app.secret_key = os.getenv("APP_KEY")
 bcrypt = Bcrypt(app)
-
+CORS(app)
 
 load_dotenv()
 app.config["MONGO_URI"] = os.getenv("MONGO_URL")
@@ -56,7 +59,7 @@ def getUser():
     if 'user_id' not in session.keys():
         return jsonify({
             "error" : "Unauthorised session" 
-        })
+        }),404
     username = session['user_id']
 
     if username:
@@ -68,7 +71,7 @@ def getUser():
     else:
         return jsonify({
             "error" : "Unauthorised session" 
-        })
+        }),404
     
 @app.route("/logout")
 def logout():
